@@ -1,0 +1,106 @@
+<!-- login.html -->
+<div class="login-wrapper">
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="login-card card shadow-lg border-0 p-4 p-md-5">
+
+      <!-- Brand -->
+      <div class="text-center mb-4">
+        <div class="brand-icon mx-auto mb-3">
+          <i class="bi bi-check2-square"></i>
+        </div>
+        <h1 class="brand-title">TaskFlow</h1>
+        <p class="text-muted small mb-0">Sign in to manage your tasks</p>
+      </div>
+
+      <!-- Error Alert -->
+      <div *ngIf="errorMessage"
+           class="alert alert-danger d-flex align-items-center gap-2 py-2 mb-3"
+           role="alert">
+        <i class="bi bi-exclamation-circle-fill flex-shrink-0"></i>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold">Username</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text bg-light border-end-0">
+              <i class="bi bi-person text-muted"></i>
+            </span>
+            <input
+              id="username"
+              type="text"
+              formControlName="username"
+              placeholder="Enter your username"
+              autocomplete="username"
+              class="form-control border-start-0"
+              [class.is-invalid]="isInvalid('username')"
+            />
+            <div class="invalid-feedback">Username is required.</div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text bg-light border-end-0">
+              <i class="bi bi-lock text-muted"></i>
+            </span>
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              class="form-control border-start-0 border-end-0"
+              [class.is-invalid]="isInvalid('password')"
+            />
+            <button
+              type="button"
+              class="input-group-text bg-light border-start-0 toggle-pw"
+              (click)="showPassword = !showPassword"
+              tabindex="-1"
+            >
+              <i class="bi text-muted"
+                 [class.bi-eye]="!showPassword"
+                 [class.bi-eye-slash]="showPassword"></i>
+            </button>
+            <div class="invalid-feedback">Password is required.</div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="btn btn-primary w-100 py-2 fw-semibold submit-btn"
+          [disabled]="loading"
+        >
+          <span *ngIf="loading"
+                class="spinner-border spinner-border-sm me-2"
+                role="status"
+                aria-hidden="true">
+          </span>
+          <i *ngIf="!loading" class="bi bi-box-arrow-in-right me-2"></i>
+          {{ loading ? 'Signing in...' : 'Sign In' }}
+        </button>
+
+      </form>
+
+      <!-- Footer link -->
+      <p class="text-center text-muted small mt-4 mb-0">
+        Don't have an account?
+        <a routerLink="/register" class="text-primary text-decoration-none fw-semibold">
+          Register
+        </a>
+      </p>
+
+    </div>
+  </div>
+</div>

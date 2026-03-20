@@ -1,0 +1,139 @@
+<div class="form-wrapper min-vh-100">
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <div class="container py-5 position-relative" style="z-index:1">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+
+        <!-- Back button -->
+        <a routerLink="/" class="back-link mb-4 d-inline-flex align-items-center gap-2">
+          <i class="bi bi-arrow-left"></i>
+          <span>Back to Tasks</span>
+        </a>
+
+        <div class="form-card card shadow-lg border-0 p-4 p-md-5">
+
+          <!-- Header -->
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="form-icon">
+              <i class="bi" [class.bi-plus-lg]="!taskId" [class.bi-pencil-square]="taskId"></i>
+            </div>
+            <div>
+              <h1 class="form-title mb-0">{{ taskId ? 'Edit Task' : 'New Task' }}</h1>
+              <p class="text-muted small mb-0">
+                {{ taskId ? 'Update your task details below' : 'Fill in the details to create a task' }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+
+            <!-- Title -->
+            <div class="mb-3">
+              <label for="title" class="form-label fw-semibold">
+                Title <span class="text-danger">*</span>
+              </label>
+              <div class="input-group has-validation">
+                <span class="input-group-text bg-light border-end-0">
+                  <i class="bi bi-type text-muted"></i>
+                </span>
+                <input
+                  id="title"
+                  type="text"
+                  formControlName="title"
+                  placeholder="Enter task title"
+                  class="form-control border-start-0"
+                  [class.is-invalid]="isInvalid('title')"
+                />
+                <div class="invalid-feedback">Title is required.</div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label for="description" class="form-label fw-semibold">Description</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0 align-items-start pt-2">
+                  <i class="bi bi-text-paragraph text-muted"></i>
+                </span>
+                <textarea
+                  id="description"
+                  formControlName="description"
+                  placeholder="Describe the task (optional)"
+                  class="form-control border-start-0"
+                  rows="3"
+                  style="resize: vertical;"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-4">
+              <label for="status" class="form-label fw-semibold">Status</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                  <i class="bi bi-flag text-muted"></i>
+                </span>
+                <select
+                  id="status"
+                  formControlName="status"
+                  class="form-select border-start-0"
+                >
+                  <option value="TO_DO">⏳ To Do</option>
+                  <option value="IN_PROGRESS">🔄 In Progress</option>
+                  <option value="DONE">✅ Done</option>
+                </select>
+              </div>
+
+              <!-- Status preview badge -->
+              <div class="mt-2">
+                <span class="status-badge"
+                  [ngClass]="{
+                    'badge-todo':     taskForm.get('status')?.value === 'TO_DO',
+                    'badge-progress': taskForm.get('status')?.value === 'IN_PROGRESS',
+                    'badge-done':     taskForm.get('status')?.value === 'DONE'
+                  }">
+                  <i class="bi me-1"
+                    [ngClass]="{
+                      'bi-hourglass-split':  taskForm.get('status')?.value === 'TO_DO',
+                      'bi-arrow-repeat':     taskForm.get('status')?.value === 'IN_PROGRESS',
+                      'bi-check-circle-fill':taskForm.get('status')?.value === 'DONE'
+                    }">
+                  </i>
+                  {{ getStatusLabel(taskForm.get('status')?.value) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex gap-2">
+              <a routerLink="/" class="btn btn-outline-secondary flex-grow-1 cancel-btn">
+                <i class="bi bi-x-lg me-2"></i>Cancel
+              </a>
+              <button
+                type="submit"
+                class="btn btn-primary flex-grow-1 submit-btn"
+                [disabled]="loading"
+              >
+                <span *ngIf="loading"
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true">
+                </span>
+                <i *ngIf="!loading" class="bi me-2"
+                  [class.bi-plus-lg]="!taskId"
+                  [class.bi-check-lg]="taskId">
+                </i>
+                {{ loading ? 'Saving...' : (taskId ? 'Update Task' : 'Create Task') }}
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

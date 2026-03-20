@@ -1,0 +1,125 @@
+.form-wrapper {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f4fd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-shape-1 {
+  width: 500px; height: 500px;
+  background: #6366f1;
+  top: -150px; left: -150px;
+}
+.bg-shape-2 {
+  width: 400px; height: 400px;
+  background: #06b6d4;
+  bottom: -100px; right: -100px;
+}
+
+/* Back link */
+.back-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.15s, transform 0.15s;
+  display: inline-flex;
+}
+.back-link:hover {
+  color: #6366f1;
+  transform: translateX(-3px);
+}
+
+/* Card */
+.form-card {
+  border-radius: 1.25rem !important;
+  background: #ffffff;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Form icon */
+.form-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  border-radius: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.form-icon i { font-size: 1.4rem; color: #fff; }
+
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  letter-spacing: -0.4px;
+}
+
+/* Input focus */
+.input-group .form-control:focus,
+.input-group .form-select:focus {
+  border-color: #6366f1;
+  box-shadow: none;
+  z-index: 3;
+}
+.input-group:focus-within .input-group-text {
+  border-color: #6366f1;
+}
+.input-group-text {
+  transition: border-color 0.15s;
+}
+
+/* Status badge preview */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+.badge-todo     { background: rgba(245,158,11,0.12); color: #d97706; }
+.badge-progress { background: rgba(6,182,212,0.12);  color: #0891b2; }
+.badge-done     { background: rgba(16,185,129,0.12); color: #059669; }
+
+/* Buttons */
+.submit-btn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  border: none;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99,102,241,0.3);
+}
+.submit-btn:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  border-radius: 0.65rem;
+  font-weight: 500;
+  color: #6b7280;
+  border-color: #d1d5db;
+  transition: all 0.15s;
+}
+.cancel-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
