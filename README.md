@@ -12,7 +12,6 @@
 
 A production-ready full stack Task Manager built with **Spring Boot** REST API and **Angular 17**, secured with **JWT authentication** and styled with **Bootstrap 5**.
 
-[Features](#-features) · [Tech Stack](#-tech-stack) · [Getting Started](#-getting-started) · [API Docs](#-api-documentation) · [Screenshots](#-screenshots)
 
 </div>
 
@@ -23,6 +22,9 @@ A production-ready full stack Task Manager built with **Spring Boot** REST API a
 TaskFlow is a full stack web application that allows users to securely manage their tasks. Users can register, log in, and perform full CRUD operations on tasks. The application is protected by JWT-based authentication, ensuring only authorized users can access task data.
 
 ---
+
+![Website Image](assets/Tasks.png)
+
 
 ## ✨ Features
 
