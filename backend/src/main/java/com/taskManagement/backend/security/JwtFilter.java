@@ -13,8 +13,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 @Component
-public class JwtFilter extends OncePerRequestFilter {  // ✅ Extend this, not Filter
-
+public class JwtFilter extends OncePerRequestFilter {  
     private final JwtUtil jwtUtil;
 
     public JwtFilter(JwtUtil jwtUtil) {
