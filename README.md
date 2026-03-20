@@ -10,7 +10,7 @@
 [![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
-A production-ready full stack Task Manager built with **Spring Boot** REST API and **Angular 17**, secured with **JWT authentication** and styled with **Bootstrap 5**.
+A  full stack Task Manager built with **Spring Boot** REST API and **Angular 17**, secured with **JWT authentication** and styled with **Bootstrap 5**.
 
 
 </div>
