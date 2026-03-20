@@ -23,7 +23,7 @@ public class AuthController {
     // Register
     @PostMapping("/register")
     public User register(@RequestBody User user) {
-        return userRepository.save(user); // simple, no encryption for demo
+        return userRepository.save(user); 
     }
 
     // Login
