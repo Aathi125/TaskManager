@@ -2,12 +2,14 @@ import { Routes } from '@angular/router';
 import { TaskListComponent } from './features/tasks/pages/task-list/task-list';
 import { TaskFormComponent } from './features/tasks/pages/task-form/task-form';
 import { LoginComponent } from './features/auth/login/login';
-import { AuthGuard } from './core/guards/auth'; // ✅ import guard
+import { RegisterComponent } from './features/auth/register/register';
+import { AuthGuard } from './core/guards/auth';
 
 export const routes: Routes = [
-  { path: '', component: TaskListComponent, canActivate: [AuthGuard] },      // ✅ protected
-  { path: 'add', component: TaskFormComponent, canActivate: [AuthGuard] },   // ✅ protected
-  { path: 'edit/:id', component: TaskFormComponent, canActivate: [AuthGuard] }, // ✅ protected
-  { path: 'login', component: LoginComponent },  // public
-  { path: '**', redirectTo: '' }                 // ✅ catch-all
+  { path: '', component: TaskListComponent, canActivate: [AuthGuard] },
+  { path: 'add', component: TaskFormComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: TaskFormComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  {path: 'register',   component: RegisterComponent },
+  { path: '**', redirectTo: '' }
 ];
