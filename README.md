@@ -186,6 +186,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 cd backend
 mvn clean install
 mvn spring-boot:run
+or .\mvnw spring-boot:run
 ```
 
 Backend is running at → **`http://localhost:8080`**
