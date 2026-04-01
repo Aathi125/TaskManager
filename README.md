@@ -347,7 +347,7 @@ For a production deployment:
 ## 👤 Author
 
 **Aathika**
-- GitHub: [@YOUR_USERNAME](https://github.com/Aathi125)
+- GitHub: [@Aathika](https://github.com/Aathi125)
 
 ---
 
